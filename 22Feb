@@ -1,0 +1,24 @@
+pipeline
+{
+ agent any
+ stages
+{  
+ 
+   steps
+   
+   withSonarQubeEnv('sonar')
+   {
+
+     withMaven(jdk: 'localjdk-1.8' 'maven: 'localmaven')
+     {
+     
+     sh 'clean mvn install sonar:sonar'
+}
+}
+
+ 
+}
+
+
+
+}
