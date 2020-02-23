@@ -1,0 +1,37 @@
+pipeline{
+
+agent any
+{
+
+stages('scm checkout'){
+ steps{
+ git 'https://github.com/PriyankaSantoshwar/maven-project'
+ }
+ }
+ }
+ stage('parallel satges'){
+   parallel{
+    stage('compile'){
+      steps{
+      
+     {
+         withMaven(jdk: 'localjdk',maven: 'localmaven)
+         {
+         sh  'mvn compile'
+  }
+  }
+  }
+ stage('test'){
+      steps{
+      
+         withMaven(jdk: 'localjdk',maven: 'localmaven)
+         {
+         sh  'mvn test'
+  }
+  }
+  }
+  }
+  }
+  }
+  }
+ failFast: true
